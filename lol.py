@@ -56,21 +56,8 @@ while True:
 			GPIO.output(21,1)
 			time.sleep(2)
 
-		elif i==0 and k==0:
-			print "Obstacles on both sides"
-			GPIO.output(26,1)
-			GPIO.output(24,0)
-			GPIO.output(19,1)
-			GPIO.output(21,0)		
-			time.sleep(2)
-
-			GPIO.output(26,1)
-			GPIO.output(24,0)
-			GPIO.output(19,0)
-			GPIO.output(21,1)
-			time.sleep(4)
 			
-		elif i==1 and k==1:	#No obstacles, robot moves forward
+		else i==1 and k==1:	#No obstacles, robot moves forward
 			print "No obstacles",i
 			#Robot moves forward
 			GPIO.output(26,0)
