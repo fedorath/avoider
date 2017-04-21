@@ -83,7 +83,7 @@ while True:
 			flag=0
 			print "Robot De-Activated",j
 			GPIO.output(26,0)
-			GPIO.output(7,0)
+			GPIO.output(24,0)
 			GPIO.output(19,0)
 			GPIO.output(21,0)
 			time.sleep(1)
