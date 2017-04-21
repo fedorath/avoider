@@ -3,7 +3,7 @@ import time
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(11, GPIO.IN) #Right IR sensor module
-GPIO.setup(15, GPIO.IN, pull_up_down=GPIO.PUD_DOWN) #middle ir
+GPIO.setup(16, GPIO.IN, pull_up_down=GPIO.PUD_DOWN) #Activation button
 GPIO.setup(7, GPIO.IN, pull_up_down=GPIO.PUD_UP) #Left IR sensor module
 
 GPIO.setup(26,GPIO.OUT) #Left motor control
@@ -19,7 +19,7 @@ GPIO.output(21,0)
 
 flag=0
 while True:
-	j=GPIO.input(15)
+	j=GPIO.input(16)
 	if j==1: #Robot is activated when button is pressed
 		flag=1
 		print "Robot Activated",j
@@ -56,13 +56,36 @@ while True:
 			GPIO.output(21,1)
 			time.sleep(2)
 
+		elif i==0 and k==0:
+			print "Obstacles on both sides"
+			GPIO.output(26,1)
+			GPIO.output(24,0)
+			GPIO.output(19,1)
+			GPIO.output(21,0)		
+			time.sleep(2)
+
+			GPIO.output(26,1)
+			GPIO.output(24,0)
+			GPIO.output(19,0)
+			GPIO.output(21,1)
+			time.sleep(4)
 			
-		else i==1 and k==1:	#No obstacles, robot moves forward
+		elif i==1 and k==1:	#No obstacles, robot moves forward
 			print "No obstacles",i
 			#Robot moves forward
 			GPIO.output(26,0)
 			GPIO.output(24,1)
 			GPIO.output(19,0)
 			GPIO.output(21,1)
-			
+			time.sleep(0.5)
+		j=GPIO.input(16)
+		if j==1: #De activate robot on pushin the button
+			flag=0
+			print "Robot De-Activated",j
+			GPIO.output(26,0)
+			GPIO.output(24,0)
+			GPIO.output(19,0)
+			GPIO.output(21,0)
+			time.sleep(1)
+
 
