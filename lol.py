@@ -30,6 +30,12 @@ while True:
 		if i==0: #Obstacle detected on right IR sensor
 			print "Obstacle detected on Right",i 
 			#Move in reverse direction
+			GPIO.output(26,0)
+			GPIO.output(24,0)
+			GPIO.output(19,0)
+			GPIO.output(21,0)
+			time.sleep(5)
+			
 			GPIO.output(26,1) #Left motor turns anticlockwise
 			GPIO.output(24,0)  
 			GPIO.output(19,1) #Right motor turns clockwise
@@ -44,6 +50,12 @@ while True:
 			time.sleep(2)
 		if k==0: #Obstacle detected on left IR sensor
 			print "Obstacle detected on Left",k
+			GPIO.output(26,0)
+			GPIO.output(24,0)
+			GPIO.output(19,0)
+			GPIO.output(21,0)
+			time.sleep(5)
+			
 			GPIO.output(26,1)
 			GPIO.output(24,0)
 			GPIO.output(19,1)
@@ -58,6 +70,12 @@ while True:
 
 		elif i==0 and k==0:
 			print "Obstacles on both sides"
+			GPIO.output(26,0)
+			GPIO.output(24,0)
+			GPIO.output(19,0)
+			GPIO.output(21,0)
+			time.sleep(5)
+			
 			GPIO.output(26,1)
 			GPIO.output(24,0)
 			GPIO.output(19,1)
