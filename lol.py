@@ -30,7 +30,6 @@ while True:
 		if i==0: #Obstacle detected on right IR sensor
 			print "Obstacle detected on Right",i 
 			#Move in reverse direction
-			GPIO.output(26,0)
 			GPIO.output(24,0)
 			GPIO.output(19,0)
 			GPIO.output(21,0)
