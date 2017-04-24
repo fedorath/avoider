@@ -61,16 +61,14 @@ while True:#While loop which grabs images until it is told to stop.
         d = (PIC1 - PIC2).binarize().invert()
         matrix = d.getNumpy()
         avg = matrix.mean()
-	radius = d.findBlobs()
+	b = d.findBlobs()
 ##########################################{Blob}##########################################	
 	if avg >= 10: #average mean greater equal to 10
-		if radius:
-			for blob in blobs:
+		if b:
+			for b in b:
 				try: #Draws green circles around the detected objects
-					blobr = radius
-					PIC.drawCircle((blob.x,blob.y),blobr,SimpleCV.Color.GREEN,3)
+					PIC.drawCircle((blob.x,blob.y),b.radius(),SimpleCV.Color.GREEN,3)
 				except Exception:
-					
 					e = sys.exc_info()[0]
 
 
