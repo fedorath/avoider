@@ -48,7 +48,7 @@ height = 480
 directory = "Photo" #Directory name photo
 if not os.path.exists("Photo"):#checks if exists
 	os.makedirs("Photo")#makes directory
-Time = 10#Time it takes to send the email
+Time = 10 #Time it takes to send the email
 sleep = 0.2
 Stime = time.time()
 	
@@ -62,7 +62,21 @@ while True:#While loop which grabs images until it is told to stop.
         matrix = d.getNumpy()
         avg = matrix.mean()
 	radius = d.findBlobs()
-##########################################{Blob}##########################################				
+##########################################{Blob}##########################################	
+	if avg >= 10: #average mean greater equal to 10
+		if blobs:
+			for blob in blobs:
+				try: #Draws green circles around the detected objects
+					blobr = radius
+					PIC.drawCircle((blob.x,blob.y),blobr,SimpleCV.Color.GREEN,3)
+				except Exception:
+					
+					e = sys.exc_info()[0]
+
+
+
+
+
 	name = dt.now().strftime(fmt) # filename is set using date and time
 	i = 1
 	while os.path.exists("Photo/Intruder%s-%s.png" % (name, i)):
@@ -82,14 +96,8 @@ while True:#While loop which grabs images until it is told to stop.
 				Sortfile = sorted(files)[0]
 				mailer = os.path.join(root, Sortfile)
 				email(mailer)#sends image to email function
-	if avg >= 10: #average mean greater equal to 10
-		if blobs:
-			for blob in blobs:
-				try: #Draws green circles around the detected objects
-					blobr = radius
-					PIC.drawCircle((blob.x,blob.y),blobr,SimpleCV.Color.GREEN,3)
-				except:
-					e = sys.exc_info()[0]
+				
+	
 					
 					
 ###################################{Names and saves image}###################################################
