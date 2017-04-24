@@ -83,7 +83,7 @@ while True:#While loop which grabs images until it is told to stop.
 				mailer = os.path.join(root, Sortfile)
 				email(mailer)#sends image to email function
 	if avg >= 10: #average mean greater equal to 10
-
+		if blobs:
 			for blob in blobs:
 				try: #Draws green circles around the detected objects
 					blobr = radius
